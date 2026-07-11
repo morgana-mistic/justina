@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mi mundo chiquito - Josefina</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 25px;
+    background: #fff6ef;
+    background-image: 
+    radial-gradient(#efd8d0 1px, transparent 1px);
+    background-size: 20px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #8b6262;
+}
+
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+    font-weight: normal;
+    color: #ce8fa2;
+    text-align:center;
+    margin-bottom:35px;
+}
+
+
+.galeria {
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:40px;
+    max-width:1000px;
+    margin:auto;
+
+}
+
+
+.foto {
+
+    position:relative;
+    background:white;
+    padding:12px 12px 25px;
+
+    box-shadow:
+    0 8px 18px rgba(120,80,80,.20);
+
+    cursor:pointer;
+
+    transition:.4s;
+
+}
+
+
+.foto:nth-child(odd){
+    transform:rotate(-3deg);
+}
+
+
+.foto:nth-child(even){
+    transform:rotate(3deg);
+}
+
+
+.foto:hover{
+    transform:rotate(0deg) translateY(-8px);
+}
+
+
+.foto img {
+
+    width:100%;
+    height:270px;
+
+    object-fit:cover;
+
+    border-radius:4px;
+
+}
+
+
+
+.texto {
+
+    text-align:center;
+    margin-top:15px;
+
+    font-size:16px;
+    font-style:italic;
+    color:#9e6878;
+
+}
+
+
+
+/* cinta adhesiva */
+
+.foto::before {
+
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+    height:22px;
+
+    background:rgba(240,210,180,.65);
+
+    top:-10px;
+    left:50%;
+
+    transform:translateX(-50%) rotate(-5deg);
+
+}
+
+
+
+/* visor ampliado */
+
+.visor {
+
+    display:none;
+
+    position:fixed;
+
+    z-index:1000;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(80,50,50,.75);
+
+    justify-content:center;
+    align-items:center;
+
+}
+
+
+
+.visor img {
+
+    max-width:90%;
+    max-height:85%;
+
+    object-fit:contain;
+
+    background:white;
+
+    padding:15px;
+
+    box-shadow:0 10px 40px black;
+
+    transform:rotate(0deg);
+
+}
+
+
+
+.visor.activo {
+
+    display:flex;
+
+}
+
+
+
+.volver {
+
+    display:block;
+
+    width:max-content;
+
+    margin:45px auto 20px;
+
+    padding:12px 35px;
+
+    background:#dca7b6;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:30px;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<h1>Mi mundo chiquito</h1>
+
+
+
+<div class="galeria">
+
+
+<div class="foto"><img src="foto1.jpeg"><div class="texto">En camino</div></div>
+
+<div class="foto"><img src="foto2.jpeg"><div class="texto">Mi primera foto</div></div>
+
+<div class="foto"><img src="foto3.jpeg"><div class="texto">Empezando a soñar conmigo</div></div>
+
+<div class="foto"><img src="foto4.jpeg"><div class="texto">Creciendo en la barriga de mami</div></div>
+
+<div class="foto"><img src="foto5.jpeg"><div class="texto">Esperándome con amor</div></div>
+
+<div class="foto"><img src="foto6.jpeg"><div class="texto">Creciendo</div></div>
+
+<div class="foto"><img src="foto7.jpeg"><div class="texto">Ya tenía muchos besitos esperándome</div></div>
+
+<div class="foto"><img src="foto8.jpeg"><div class="texto">Mis papitos</div></div>
+
+<div class="foto"><img src="foto9.jpeg"><div class="texto">El día que comenzó mi nombre</div></div>
+
+<div class="foto"><img src="foto10.jpeg"><div class="texto">Mi tío</div></div>
+
+
+</div>
+
+
+<div class="visor" id="visor">
+<img id="imagenGrande">
+</div>
+
+
+<a class="volver" href="index.html">
+Volver al inicio
+</a>
+
+
+
+<script>
+
+
+const fotos=document.querySelectorAll(".foto img");
+const visor=document.getElementById("visor");
+const imagenGrande=document.getElementById("imagenGrande");
+
+
+fotos.forEach(foto=>{
+
+foto.onclick=function(){
+
+imagenGrande.src=this.src;
+
+visor.classList.add("activo");
+
+}
+
+});
+
+
+visor.onclick=function(){
+
+visor.classList.remove("activo");
+
+}
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
